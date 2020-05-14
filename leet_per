@@ -1,0 +1,16 @@
+import math
+class Solution:
+    path = [0]
+    def numSquares(self, n: int) -> int:
+        path = [n]*(n+1)
+        path[0] = 0
+        # nos = []
+        for i in range(1,1+math.ceil(math.sqrt(n))):
+            # nos.append(i**2)
+            no = i**2
+            for i in range(no,n+1):
+                path[i-no] = min(path[i],1+path[i-no])
+
+        # for no in  nos:
+            
+        return path[-1]

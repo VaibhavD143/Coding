@@ -1,0 +1,10 @@
+mother vertex:
+    - a vertex u from which there exists path to every other vertex
+    algo:
+        - apply DFS from any vertex and keep trace of last finished vertex v
+        - now, if mother vertex exist in a graph then v is one of them
+        - apply DFS from v and if it reaches all the nodes then that's out mother vertex
+    
+Topological sort:
+    - can be done using in-degree and out-degree count of the nodes(Kahn's Algorithm)
+

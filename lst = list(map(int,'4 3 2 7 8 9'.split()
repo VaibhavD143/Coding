@@ -1,0 +1,1 @@
+lst = list(map(int,'4 3 2 7 8 9'.split()))
