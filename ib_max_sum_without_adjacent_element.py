@@ -1,3 +1,7 @@
+"""
+gyaan :
+look at the editorial bc!!
+"""
 class Solution:
     # @param A : list of list of integers
     # @return an integer

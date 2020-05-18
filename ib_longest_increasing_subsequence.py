@@ -1,3 +1,14 @@
+"""
+Gyaan : the way it is working!!! lit
+EX. 1 5 6 2 4 7
+subs:
+1
+1 5
+1 5 6
+1 2 6
+1 2 4
+1 2 4 7
+"""
 import bisect
 class Solution:
     # @param A : tuple of integers
@@ -11,12 +22,3 @@ class Solution:
             else:
                 subs[ind]=num
         return len(subs)
-"""
-EX. 1 5 6 2 4 7
-subs:
-1
-1 5
-1 5 6
-1 2 6
-1 2 4
-1 2 4 7
