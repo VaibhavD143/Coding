@@ -1,4 +1,7 @@
-
+"""
+Working
+"""
+from collections import deque
 def transpose_graph(graph):
     n_graph = [[] for _ in range(len(graph))]
     for i in range(len(graph)):
@@ -6,32 +9,35 @@ def transpose_graph(graph):
             n_graph[j].append(i)
     return n_graph
 
+def fillOrder(graph,u,stack,visited):
+    visited[u]=True
+    for v in graph[u]:
+        if not visited[v]:
+            fillOrder(graph,v,stack,visited)
+    stack.append(u)
+
+
+
 def driver(graph):
-    visited = [0]*len(graph)
+    visited = [False]*len(graph)
     dfs = []
+    #this is not just a dfs, we add node to the stack after it finishes 
     for i in range(len(graph)):
         if not visited[i]:
-            dq = [i]
-            visited[i] = 1
-
-            while dq:
-                elem = dq.pop()
-                dfs.append(elem)
-                for node in graph[elem]:
-                    if not visited[node]:
-                        dq.append(node)
-                        visited[node] = 1
+            fillOrder(graph,i,dfs,visited)
     print(dfs)
     
     t_graph = transpose_graph(graph)
     print(t_graph)
 
-    visited = [0]*len(graph)
+    visited = [False]*len(graph)
     res=[]
-    for i in dfs:
-        if not visited[i]:
-            dq = [i]
-            visited[i] = 1
+    # for i in reversed(dfs):
+    while dfs:
+        u=dfs.pop()
+        if not visited[u]:
+            dq = [u]
+            visited[u] = True
             t_res = []
             while dq:
                 elem = dq.pop()
@@ -39,7 +45,7 @@ def driver(graph):
                 for node in t_graph[elem]:
                     if not visited[node]:
                         dq.append(node)
-                        visited[node] = 1
+                        visited[node] = True
             res.append(t_res)
     return res
 

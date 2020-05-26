@@ -16,6 +16,8 @@ class Solution:
         #ls stores index of element which is grater than that in left side
         ls=[]
         for i,val in enumerate(lst):
+            #considering equal as higher as any one side it needs to be considered for case with equal elements
+            #BIG CATCH
             while ss and lst[ss[-1]]<val:
                 ss.pop()
             if not ss:
@@ -28,6 +30,7 @@ class Solution:
         #rs stores element index grater than that in right side
         rs=[]
         for i in range(len(lst)-1,-1,-1):
+            #not considering equal as higher as it was considered in left count, for case with equal elements
             while ss and lst[ss[-1]]<=lst[i]:
                 ss.pop()
             if not ss:

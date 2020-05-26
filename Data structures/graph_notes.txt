@@ -1,5 +1,5 @@
 mother vertex:
-    - a vertex u from which there exists path to every other vertex
+    - A vertex u from which there exists path to every other vertex
     algo:
         - apply DFS from any vertex and keep trace of last finished vertex v
         - now, if mother vertex exist in a graph then v is one of them
@@ -8,3 +8,28 @@ mother vertex:
 Topological sort:
     - can be done using in-degree and out-degree count of the nodes(Kahn's Algorithm)
 
+Strongly Connected Graph:
+	- A directed graph is strongly connected if there is a path between all pairs of vertices. A strongly connected component (SCC) of a directed graph is a maximal strongly connected subgraph.
+    - DFS,stack ordered on their finishing time,
+    - Pop last added element,do DFS on it.Repeat and get components
+
+DFS Applicatins:
+- path finding(not shortes path)
+- check wether graph is bipartite(can be divided into two sets, where no edge within a set):
+	assign alternate color, if any clash then not bi-pi graph
+- topological sort
+- Detecting cycle in directed Graph or undirected:
+	if back edge exist! 
+- strongly connected components
+
+BFS Applicatins:
+- Shortest path between two nodes
+- in a web crawler
+- peer to peer network like BitTorrent
+- Social Networking website
+- Broadcasting : Broadcast through nearest node available
+- GPS : finds neares node 
+- Cycle Detection in directed graph:
+    - count in-degree
+    - iterate on 0 in-degree nodes and decreament their neighbours
+    - if all are visited then False,else True

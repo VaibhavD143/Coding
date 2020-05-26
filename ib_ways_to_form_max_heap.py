@@ -48,6 +48,6 @@ class Solution:
         h = 1+int(math.log2(A))
         lastLevel = 2**(h-1)
         rem = A-lastLevel+1
-        left = min(rem,lastLevel//2)
-        left = left+(lastLevel-2)//2
+        left = min(rem,lastLevel//2)    #node in left part in last level
+        left = left+(lastLevel-2)//2    #node in left side of the root
         return (self.comb(A-1,left)*self.solve(left)*self.solve(A-1-left))%1000000007

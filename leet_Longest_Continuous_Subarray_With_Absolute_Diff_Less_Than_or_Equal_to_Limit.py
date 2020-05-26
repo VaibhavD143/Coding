@@ -1,3 +1,4 @@
+import bisect
 from collections import deque
 lst = [10,1,2,4,7,2]
 # lst = [4,2,2,2,4,4,2,2]
@@ -7,6 +8,42 @@ lst = [7,40,10,10,40,39,96,21,54,73,33,17,2,72,5,76,28,73,59,22,100,91,80,66,5,4
 # lst= [7,40,10,10,40]
 limit = 63
 # limit = 5
+
+class Solution:
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        if not nums:
+            return 0
+        
+        mins = deque([])
+        maxs = deque([])
+        res=0
+        l=0
+        for i,n in enumerate(nums):
+            while mins and nums[mins[-1]]>n:
+                mins.pop()
+            mins.append(i)
+            while maxs and nums[maxs[-1]]<n:
+                maxs.pop()
+            maxs.append(i)
+            # print(mins,maxs)
+            while nums[maxs[0]]-nums[mins[0]]>limit:
+                if maxs[0]<mins[0]:
+                    l=maxs.popleft()+1
+                else:
+                    l=mins.popleft()+1
+            res=max(res,i-l+1)
+        return res
+
+    def longestSubarrayEditorial(self, A, limit):
+        i, L = 0, []
+        for j in range(len(A)):
+            bisect.insort(L, A[j])
+            if L[-1] - L[0] > limit:
+                L.pop(bisect.bisect(L, A[i]) - 1)
+                i += 1
+        return j - i + 1
+
+
 l,r,mind,maxd = 0,0,0,0
 minq,maxq = deque([]),deque([])
 res =0

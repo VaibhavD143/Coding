@@ -32,3 +32,24 @@ Don't understand
 - x | ~(x + 1) = extracts the lowest cleared bit of x (all others are set).
 - x | (x - (1 << n)) = x, with the run of cleared bits (possibly length 0) starting at bit n set.
 - x | ~(x - (1 << n)) = the lowest run of cleared bits (possibly length 0) in x, starting at bit n are the only clear bits.
+
+*) XOR : 
+-   (x ^ y) == (x | y) - (x & y) >= |y - x|
+-   so within a 2^(n-1) to 2^(n) - 1 range any two number will have the minimum xor, use binary values to see and u will realize!
+
+*) Counting sort and Radix sort:
+- Radix sort uses Counting Sort as a subroutine, we do counting sort on each digit.
+
+*) swap two variables:
+-   a=a^b
+    b=a^b
+    a=a^b
+*) 32-bit range = -2*(32-1) to (2**(32-1))-1
+
+*) Prime factorization:
+-   in general case sscenario we run a loop from 2 to sqrt(n)
+-   for multiple queries, we can precompute minimum prime divisior of a number by seive method and then find prime factors in log(n).
+    - divide number with their smallest prime divisior and keep dividing it until it becomes 1!
+    -https://www.geeksforgeeks.org/prime-factorization-using-sieve-olog-n-multiple-queries/
+
+

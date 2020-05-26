@@ -1,0 +1,22 @@
+LinkedList:
+1) Clone linked list with radom pointers:
+- use hashmap and its O(n) space
+- create duplicate node after each original node, assign node.next.random = node.radom.next *traverse two nodes*,then extract LL
+
+Tree:
+1) least common ancestor:
+2) Distance between two nodes in BT
+
+
+DP:
+1)Subset sum problem:
+- sum given: take it,don't take it. O(sum*n) space and time
+- is divide in two equal sum possible?: if total sum of array is odd, not possible
+                            else check is totalSum//2 exist!
+- give two sets :   first check if possible, from there usind dp matrix,
+                    if dp[sum][i-1] is False and dp[sum][i] is True then it contributes to the sum
+2) Egg dropping problem
+
+3) Biggest sqare in matrix of 0/1
+4) Biggest rectangle in matrix of 0/1(stack and queue)
+5) ways to color 3D grid with 4 colors

@@ -22,6 +22,8 @@ class Solution:
                     l[idx] = stackIdex
                     break
             stack.append((idx, val))
+        print(l)
+        print(r)
         # Populate G, but don't sort yet
         g = [(p[A[i]], (i - lr[0]) * (lr[1] - i)) for i, lr in enumerate(zip(l, r))]
         # Sort and compress
@@ -33,3 +35,5 @@ class Solution:
         # Do queries
         Q = []
         return [G[bisect_left(G, (q,0))][1] for q in B]
+obj = Solution()
+print(obj.solve([3,4,1,2,4,5,4],[1,2,3,4,5,6]))
