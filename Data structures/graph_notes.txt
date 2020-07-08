@@ -33,3 +33,8 @@ BFS Applicatins:
     - count in-degree
     - iterate on 0 in-degree nodes and decreament their neighbours
     - if all are visited then False,else True
+
+Euclrean path:
+- visit all edges excatly once
+Euclrean CKT:
+- visit all edges excatly once and start and end are same vertex

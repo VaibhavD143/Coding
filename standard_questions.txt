@@ -1,3 +1,5 @@
+All questions from IB and leet faviourite and these!
+
 LinkedList:
 1) Clone linked list with radom pointers:
 - use hashmap and its O(n) space
@@ -6,7 +8,17 @@ LinkedList:
 Tree:
 1) least common ancestor:
 2) Distance between two nodes in BT
+3) In BST two nodes are swapped
+    - next: do it without O(n) space
+4)Construct BST/BT from preorder and inorder traversal in O(n)
+5) Tree traversals iteratively
+6) Subtree of another tree O(n):
+https://leetcode.com/problems/subtree-of-another-tree/
 
+Graph:
+1) Two colored graph, bi-partition
+2) Dijsktra with atmost k steps, https://leetcode.com/problems/cheapest-flights-within-k-stops
+3) Parallel BFS , leetcode rotting oranges
 
 DP:
 1)Subset sum problem:
@@ -20,3 +32,27 @@ DP:
 3) Biggest sqare in matrix of 0/1
 4) Biggest rectangle in matrix of 0/1(stack and queue)
 5) ways to color 3D grid with 4 colors
+6) Max sum of rectangle in given matrix(leet) or submatrix with sum zero(IB) or target(leet)
+7) matrix chain multiplication (burst balloons,leetcode)
+8) Subset sum problem, perfect sum problem (two subset with equal average(IB), subset sum divisible by k(geek))
+9) Digit DP : The Game is ON , hackerrank
+10) For bitmasking : 
+- 10 person and hat problem
+- https://leetcode.com/contest/biweekly-contest-29/problems/parallel-courses-ii/
+
+Tricky:
+1) find the duplicate , only one duplicate in an array but it can occure more than 2 times.
+        -linked list cycle
+2) find first duplicate in an array of size n where it contains numbers from 1-n, findfirst duplicate of array:i.e. [1,2,3,3,2] o/p : 3
+        - make index value negative, youtube google search
+3) stone game(leetcode) : first player always wins
+                        :   for amount, use dp
+4) Unique paths in grid: asked to go to right bottom from top left, can use PnC then and get answer
+5) max product subarray : IB_local solution
+
+Stack/Queue:
+1) k stacks in single array : /Data Structures
+2) k queues in single array : /Data Structures
+
+Noted:
+https://leetcode.com/discuss/interview-question/396418/Amazon-or-OA-2019-or-Point-of-Lattice

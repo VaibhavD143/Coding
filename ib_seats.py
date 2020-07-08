@@ -1,3 +1,8 @@
+"""
+Intution:
+After hitting first 'x', any '.' comes,you are supposed to cross it
+so at any point we decide which is cost effienr moving left part 'x' or moving right 'x'
+"""
 class Solution:
     # @param A : string
     # @return an integer

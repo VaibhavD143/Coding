@@ -60,7 +60,4 @@ BITTree = construct(freq,len(freq))
 print("Sum of elements in arr[0..5] is " + str(getsum(BITTree,5))) 
 freq[3] += 6
 updatebit(BITTree, len(freq), 3, 6) 
-print("Sum of elements in arr[0..5]"+
-					" after update is " + str(getsum(BITTree,5))) 
-
-# This code is contributed by Raju Varshney 
+print("Sum of elements in arr[0..5]"+" after update is " + str(getsum(BITTree,5))) 

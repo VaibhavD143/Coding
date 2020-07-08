@@ -1,0 +1,17 @@
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        curr = ['a','b','c']
+        tot = 3*(2**(n-1))
+        if k>tot:
+            return ""
+        k-=1
+        res=""
+        while n:
+            skip = 2**(n-1)
+            ind = k//skip
+            res+=curr[ind]
+            k-=ind*skip
+            curr = ['a','b','c']
+            curr.remove(res[-1])
+            n-=1
+        return res

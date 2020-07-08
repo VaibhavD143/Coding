@@ -21,7 +21,6 @@ def add_elem(elem,bucks,cnt,l_cnt):
         if cnt[j] < 1:
             cnt[j] = 0
             bucks[j] = None
-            return
 
 for i in range(l_lst):
     add_elem(lst[i],bucks,cnt,k-1)

@@ -1,100 +1,35 @@
-# Python3 program to Correct the 
-# Random Pointer in Doubly Linked List 
+edges =[[0, 1], [0, 2], [1, 3], [2, 3], [2, 5], [5, 6], [3, 4]]
+nodes = 7
 
-class Node: 
-	
-	def __init__(self, data): 
-		self.data = data 
-		self.prev = None
-		self.next = None
+graph= [[] for _ in range(nodes)]
+for e in edges:
+    graph[e[0]].append(e[1])
+    graph[e[1]].append(e[0])
 
-# Function to correct the random pointer 
-def correctPointer(head): 
+seen =[False]*nodes
+dis = [-1]*nodes
+fin = [-1]*nodes
+parent = [None]*nodes
+res = set()
+def rec(u,time):
+    child = 0
+    fin[u] = dis[u] = time
+    seen[u] = True
+    for v in graph[u]:
+        if not seen[v]:
+            parent[v] = u
+            rec(v,time+1)
+            child+=1
+            fin[u] = min(fin[u],fin[v])
 
-	if head == None: 
-		return
+            if parent[u] == None and child>1:
+                res.add(u)
+            elif parent[u] != None and fin[v]>=dis[u]:
+                res.add(u)
+        elif parent[v] != u:
+            fin[u] = min(fin[u],dis[v])
+    
+    return 
 
-	temp = head 
-
-	# if head.next's previous is not 
-	# pointing to head itself, change it. 
-	if (head.next != None and
-		head.next.prev != head): 
-
-		head.next.prev = head 
-		return
-	
-	# If head's previous pointer is 
-	# incorrect, change it. 
-	if head.prev != None: 
-
-		head.prev = None
-		return
-	
-	# Else check for remaining nodes. 
-	temp = temp.next
-	while temp != None: 
-
-		# If node.next's previous pointer 
-		# is incorrect, change it. 
-		if (temp.next != None and
-			temp.next.prev != temp): 
-
-			temp.next.prev = temp 
-			return
-		
-		# Else If node.prev's next pointer 
-		# is incorrect, change it. 
-		elif (temp.prev != None and
-			temp.prev.next != temp): 
-
-			temp.prev.next = temp 
-			return
-		
-		# Else iterate on remaining. 
-		temp = temp.next
-	
-# Function to print the DLL 
-def printList(head): 
-
-	temp = head 
-
-	while temp != None: 
-
-		print(temp.data, "(", end = "") 
-
-		# If prev pointer is null, print -1. 
-		if temp.prev == None: 
-			print(-1, end = ") ") 
-		else: 
-			print(temp.prev.data, end = ") ") 
-		
-		temp = temp.next
-	
-	print() 
-
-# Driver Code 
-if __name__ == "__main__": 
-
-    # Creating a DLL 
-    head = Node(1) 
-    head.next = Node(2) 
-    head.next.prev = head 
-    head.next.next = Node(3) 
-    head.next.next.prev = head.next 
-    #head.next.next.next = Node(4) 
-    node = Node(4)
-    #head.next.next.next.prev = head.next.next
-    node.prev = head.next.next
-    print("Incorrect Linked List:", 
-                    end = " ") 
-    printList(head) 
-
-    correctPointer(head) 
-
-    print("\nCorrected Linked List:", 
-                    end = " ") 
-    printList(head) 
-
-# This code is contributed 
-# by Rituraj Jain 
+rec(0,0)
+print(res)

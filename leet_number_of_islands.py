@@ -1,6 +1,26 @@
 """
 https://leetcode.com/problems/number-of-islands/
 """
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        cnt=0
+        dirs = [[1,0],[0,1],[-1,0],[0,-1]]
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == '1':
+                    cnt+=1
+                    ss = [(i,j)]
+                    grid[i][j] = '0'
+                    while ss:
+                        x,y = ss.pop()
+                        for d in dirs:
+                            nx = x+d[0]
+                            ny = y+d[1]
+                            if 0<=nx<len(grid) and 0<=ny<len(grid[0]) and grid[nx][ny] == '1':
+                                ss.append((nx,ny))
+                                grid[nx][ny] = '0'
+        return cnt
+
 r,c = map(int,input().split())
 mat = []
 for i in range(r):

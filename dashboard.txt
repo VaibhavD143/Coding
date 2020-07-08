@@ -1,0 +1,41 @@
+Revise:
+- KMP algo
+- Bit masking (hat Problem)
+- inversion pair
+- Egg Problem
+- Dijsktra
+- prims
+- krushkal
+- bellman fard
+- floyd-warshall
+- rabin karp for pattern matching
+- Grapg algo
+Python:
+    - dict working
+    - large number handaling
+    - garbage collection
+    - List working
+    - tuple working
+    - set working
+    - deque
+    - lambda functions
+    - itertools.islice() : provide iterable and left,right boundary, just slicing tool
+- https://leetcode.com/problems/single-number-ii/discuss/43295/Detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers
+
+To-Do:
+- Meet in the middle
+- Longest palindromic subsequence
+- BT from Inorder and preorder
+- Python:
+    - architecture and life cycle of code
+    - itertools.tee #find kth smallest sum of sorted matrix 76ms solution
+- Randomised (n/5) algo for finding median 
+- Z-array algo
+- sortedcontainers for BST
+https://leetcode.com/discuss/interview-question/system-design/719253/Design-Facebook-%3A-System-Design-Interview
+- Multi-threading concept
+- Design patterns
+
+Idea:
+- pop in tuple
+- slicing in deque

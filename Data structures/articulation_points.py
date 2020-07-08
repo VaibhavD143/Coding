@@ -40,5 +40,5 @@ def driver(graph):
     #         print(i)
     
 time = 0
-graph = [[1],[2],[3],[]]
+graph = [[1,3],[2,0],[3,1],[0,2]]
 driver(graph)
