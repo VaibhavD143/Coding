@@ -1,0 +1,95 @@
+Features:
+Vehicle : motorcycle=> small,medium,large,car=>medium,large ,Truck=>large
+Spot: small, medium, Large
+Multiple Entrances and Multiple Exits
+
+Use Cases:
+Vehicle:
+    List<spotType>, NumberPlate,ContactNo
+    - motorcycle
+    - car
+    - Truck
+Spot:
+    id,Rate
+    - small
+    - medium
+    - large
+Ticket:
+    id, timestamp,Vehicle,spot
+
+ParkinLot:
+    - List<Spot>
+    - smallStack
+    - mediumStack
+    - largeStack
+
+public Absract class Vehicle(){
+    private List<SpotType> allowed;
+    private String NumberPlate;
+    private String ContactNo;
+    ....details....
+
+//    public List<SpotType> getAllowedSpotTypes();
+    public boolean isSpotAllowes(SpotType spotType);
+}
+
+public class motorcycle extends Vehicle(){
+}
+public class car extends Vehicle(){
+}
+public class Truck extends Vehicle(){
+}
+
+public class Spot(){
+    private String id;
+    private double ratePerHour;
+    private SpotType spotType;
+
+    private double getRatePerHour();
+    private SpotType getSpotType();
+}
+
+public enum SpotType{
+    SMALL,
+    MEDIUM,
+    LARGE
+}
+
+public class Ticket(){
+    private String id;
+    private timestamp arrivalTime;
+    private Vehicle vehicle;
+    private Spot spot;
+    
+    public double calculateBill(){};
+}
+
+public class ParkinLot(){
+
+    List<Entrance> entrances;
+    List<Exit> exits;
+
+    private boolean freeSpot(Spot spot){}
+    private boolean occupySpot(Spot spot){}
+}
+
+
+public class Entrance(){
+    
+    private String id;
+    private SortedMap<int,spot> availableSmallSpot;
+    private SortedMap<int,spot> availableMediumSpot;
+    private SortedMap<int,spot> availableLargeSpot;
+
+    public Ticket assignSpot(Vehicle vehicle);
+}
+
+public class Exit(){
+    private String id;
+    public boolean checkOut(Ticket ticket);
+}
+
+List<Integer> xyz = new LinkedList<Integer>();
+                    new ArrayList<Integer>();
+
+SortedMap<Integer,Spot> xyz = new TreeMap<Integer,Spot>();

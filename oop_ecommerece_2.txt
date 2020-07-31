@@ -1,0 +1,118 @@
+Features:
+- users
+- user can add items to cart
+- user can search for an item
+- place order
+- wishlist
+- review an item
+Classes:
+user
+product
+cart
+orders
+ecommerce
+
+public abstract Customer{
+    private Cart cart;    
+}
+
+public class Guest extends Customer{
+    public Account registerAsMember(){};
+}
+
+public class Member extends Customer{
+    private String id;
+    private String name;
+    //basic details//
+    private List<Product> wishList;
+    private List<Order> orders;
+    private Address address;
+
+    public boolean addProductToWishList(Product product){};
+    public boolean removeProductFromWishList(){};
+}
+
+public class Address{
+    private String id;
+    private pincode;
+}
+
+private class Order{
+    private String id;
+    private Map<Product,Integer> orderProducts;
+    private timestamp placedDate;
+    private orderStatusEnum status;
+    private Address address;
+
+    public boolean updateStatus(orderStatusEnum status){};
+    public orderStatusEnum getStatud(){};
+}
+public orderStatusEnum{
+    PLACED,
+    DELIVERED
+}
+
+private class Cart{
+    private String id;
+    private Map<Product,Integer> cartItems;
+    private double totalAmount;
+
+    public boolean addProduct(Product product){};
+    public boolean removeProduct(Product product){};
+    public void calculateBill(){};
+    public double getTotalAmount(){};
+    public Order checkOut(){};
+    public boolean isMember(){};
+}
+
+interface IPatmentService{
+    final int billAmount;
+    public boolean doPayment(){};
+}
+
+public
+
+private class Product{
+    private String id;
+    private String name;
+    private categoryEnum category;
+    private double price;
+    private List<Review> reviews;
+    private double rating;
+
+    public boolean updateRating(Review newReview){};
+    public boolean addReview(Review review){};
+
+}
+
+public class Review{
+    private String id;
+    private User user;
+    private int rating;
+    private String comment;
+
+}
+
+private class Amazon{
+    private List<Product> inventory;
+    private List<User> users;
+    private List<Order> pastOrders;
+    private List<Order> activeOrders;
+
+
+    private boolean increamentStock(int count){};
+    private boolean decreamentStock(int count){};
+    private boolean addUser(User user){};
+    private boolean removeUser(User user){};
+    private Map<Product,Integer> showProductByName(String name){};   
+    private Map<Product,Integer> showProductByCategory(String category){};
+    private List<String> getNamesStartWith(String name){};
+    private List<categoryEnum> getNamesStartWith(String name){};
+}
+
+Doubt!
+1) where to put checkout and how will it be added to main Amazon class
+    - It should be with user cart only
+    - there will be some mechanism like socket or web to communicat between store and user
+2) as per the architeccture, how more than two customer will interact:
+    - there will be more one connection with store by individual user

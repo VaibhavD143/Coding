@@ -4,6 +4,37 @@ Dhyan se and dedication se kro bc!
 """
 from collections import Counter
 class Solution:
+    # @param A : string
+    # @param B : string
+    # @return a strings
+    def minWindow(self, A, B):
+        pat = Counter(B)
+        length = len(B)
+        l=0
+        res = float('inf')
+        cnt = Counter()
+        for i,ch in enumerate(A):
+            if ch in pat:
+                cnt[ch]+=1
+                if cnt[ch] <= pat[ch]:
+                    length-=1
+                if length == 0:
+                    while length == 0:
+                        c = A[l]
+                        if c in pat:
+                            cnt[c]-=1
+                            if cnt[c]<pat[c]:
+                                length+=1
+                        l+=1
+                    if i-l+2<res:
+                        starti =l-1
+                        endi = i
+                        res = i-l+2
+                        # print(res,l,i)
+        return A[starti:endi+1] if res!=float('inf') else ""
+
+from collections import Counter
+class Solution1:
 	# @param A : string
 	# @param B : string
 	# @return a strings

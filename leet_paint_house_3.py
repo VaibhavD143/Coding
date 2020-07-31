@@ -1,5 +1,37 @@
 class Solution:
     def minCost(self, houses: List[int], rate: List[List[int]], m: int, n: int, target: int) -> int:
+        def helper(prev,target,ind):
+            if target == -1:
+                return float('inf')
+            if ind == m:
+                if target == 0:
+                    return 0
+                return float('inf')
+            if m-ind<target:
+                return float('inf')
+            if dp[target][prev][ind]!=-1:
+                return dp[target][prev][ind]
+            
+            if houses[ind] != 0 :
+                if houses[ind] == prev:
+                    res = helper(prev,target,ind+1)
+                else:
+                    res = helper(houses[ind],target-1,ind+1)
+                dp[target][prev][ind] = res
+                return res
+            res = float('inf')
+            
+            for col in range(1,n+1):
+                res = min(res,helper(col,target-(prev!=col),ind+1)+rate[ind][col-1])
+            # print(target,prev,ind,res)
+            dp[target][prev][ind] = res
+            return res
+        
+        dp = [[[-1]*m for _ in range(n+1)] for _ in range(target+1)]
+        ans = helper(-1,target,0)
+        return ans if ans!=float('inf') else -1
+
+    def minCost1(self, houses: List[int], rate: List[List[int]], m: int, n: int, target: int) -> int:
         
         #prev : previous index color(0-based)
         #ind : current house index

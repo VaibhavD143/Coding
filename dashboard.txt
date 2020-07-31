@@ -1,15 +1,18 @@
+- TILL REPEATING SUBSEQUENCE IN MORGAN
+
 Revise:
 - KMP algo
 - Bit masking (hat Problem)
 - inversion pair
 - Egg Problem
-- Dijsktra
-- prims
-- krushkal
-- bellman fard
-- floyd-warshall
+- Grapg Theory
+- prims - start from src and update adjacents
+- krushkal - pick minimum edge till there is n-1 edges
+- shortest path in DAG - topological sort
+- shortest path in DG - Dijsktra
+- shortest path in DG with -ve cycle - bell man ford
 - rabin karp for pattern matching
-- Grapg algo
+- all pair shortest path - floyd warshall
 Python:
     - dict working
     - large number handaling
@@ -23,9 +26,8 @@ Python:
 - https://leetcode.com/problems/single-number-ii/discuss/43295/Detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers
 
 To-Do:
+- Median of two sorted array
 - Meet in the middle
-- Longest palindromic subsequence
-- BT from Inorder and preorder
 - Python:
     - architecture and life cycle of code
     - itertools.tee #find kth smallest sum of sorted matrix 76ms solution
@@ -34,8 +36,10 @@ To-Do:
 - sortedcontainers for BST
 https://leetcode.com/discuss/interview-question/system-design/719253/Design-Facebook-%3A-System-Design-Interview
 - Multi-threading concept
-- Design patterns
+- What is JDBC?
+
 
 Idea:
-- pop in tuple
+- pop in tuple cancel : mutability will go away and that will make it vunerable in dictionary
 - slicing in deque
+- updation in heap

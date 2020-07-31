@@ -1,0 +1,74 @@
+Features:
+Vehicle : motorcycle=> small,medium,large,car=>medium,large ,Truck=>large
+Spot: small, medium, Large
+One Entrance and One Exit
+
+Use Cases:
+Vehicle:
+    List<spotType>, NumberPlate,ContactNo
+    - motorcycle
+    - car
+    - Truck
+Spot:
+    id,Rate
+    - small
+    - medium
+    - large
+Ticket:
+    id, timestamp,Vehicle,spot
+
+ParkinLot:
+    - List<Spot>
+    - smallStack
+    - mediumStack
+    - largeStack
+
+public Absract class Vehicle(){
+    private String NumberPlate;
+    private String ContactNo;
+    ....details....
+
+//    public List<SpotType> getAllowedSpotTypes();
+}
+
+public class motorcycle extends Vehicle(){
+}
+public class car extends Vehicle(){
+}
+public class Truck extends Vehicle(){
+}
+
+public class Spot(){
+    private String id;
+    private double ratePerHour;
+    private SpotType spotType;
+}
+
+public enum SpotType{
+    SMALL,
+    MEDIUM,
+    LARGE
+}
+
+public class Ticket(){
+    private String id;
+    private timestamp arrivalTime;
+    private Vehicle vehicle;
+    private Spot spot;
+    
+    public double calculateBill(){};
+}
+
+public class ParkinLot{
+    private List<Spot> smallSpots;
+    private List<Spot> mediumSpots;
+    private List<Spot> largeSpots;
+
+    private Map<Vehicle,SpotType> vehcleToSpot;
+
+    public boolean isSpotAllowes(SpotType spotType);
+    public Ticket assignSpot(Vehicle vehicle);
+    public void blockSpot(Spot spot);
+
+    public boolean checkOut(Ticket ticket);
+}

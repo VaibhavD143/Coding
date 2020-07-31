@@ -1,0 +1,105 @@
+Features:
+- List of cities with cinema, show them
+- cinema
+    -multile halls
+        -one movie at a time
+- each movie have multiple shows
+- search based on movie
+- selecting movie will display cinema and available shows
+- book ticket of a show
+    - multiple tickets in single booking
+    - booked and available seats
+    //- disccount coupon
+//- payment for customer
+- no multiple allocation for single seat
+
+Cinema
+    - Adress
+    - list<Halls>
+Address
+Hall
+    - List<Show>
+Show
+    - startTime,endTime
+    - Movie
+    - List<Seat>
+
+Seat
+    - isBooked
+
+
+public class Address{
+    private String id;
+    private String city;
+    //details//
+}
+
+public class Cinema{
+    private Address address;
+    private List<Hall> halls;
+
+    public List<Show> getShows(Movie movie){};
+}
+
+public class Hall{
+    private String id;
+    private List<Show> schedule;
+    
+    public List<Movie> getMovies(){};
+}
+
+public class Show{
+    private String id;
+    private List<Seat> seats;
+    private boolean isHouseFull;
+    private Movie movie;
+
+    public List<Seat> getSeatMap(){};
+    public boolean isHouseFull(){};
+}
+
+public class Seat{
+    private String id;
+    private boolean isBooked;
+
+    public boolean isSeatBooked(){};
+}
+
+public class Movie{
+    private String id;
+    private String name;
+    //details//
+}
+
+public class User{
+    private String id;
+    private String name;
+    //details//
+}
+
+public class BMS{
+    private List<Cinema> cinemas;
+    private List<String> cities;
+    private List<Booking> allBookings;
+
+
+    public List<Show> searchByMovie(Movie movie, String City){};
+    public List<Cinema> searchCinemaByCity(String city){};
+    public Booking checkOut(Show show,List<Seat> seat, User user){};
+}
+
+public class Booking{
+    private String id;
+    private User user;
+    private Show show;
+    private List<Seat> bookedSeats;
+    private Date bookinTime;
+    private double totalAmount;
+    //payment detals//
+
+    public User getUser(){};
+    public List<Seat> getBookedSeats(){}
+    public double calculateBill(){};
+}
+
+/* ask how about timestamp, data type

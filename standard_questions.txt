@@ -19,6 +19,8 @@ Graph:
 1) Two colored graph, bi-partition
 2) Dijsktra with atmost k steps, https://leetcode.com/problems/cheapest-flights-within-k-stops
 3) Parallel BFS , leetcode rotting oranges
+4) Cut vertices(Articulation Point), Cut edges(Bridges)
+5) Euler Circuit and Euler Path https://practice.geeksforgeeks.org/problems/circle-of-strings/0
 
 DP:
 1)Subset sum problem:
@@ -39,6 +41,7 @@ DP:
 10) For bitmasking : 
 - 10 person and hat problem
 - https://leetcode.com/contest/biweekly-contest-29/problems/parallel-courses-ii/
+11) maximum sum increasing subsequence https://www.geeksforgeeks.org/maximum-sum-increasing-subsequence-using-binary-indexed-tree/
 
 Tricky:
 1) find the duplicate , only one duplicate in an array but it can occure more than 2 times.
@@ -48,11 +51,41 @@ Tricky:
 3) stone game(leetcode) : first player always wins
                         :   for amount, use dp
 4) Unique paths in grid: asked to go to right bottom from top left, can use PnC then and get answer
-5) max product subarray : IB_local solution
+5) max product subarraybitmasking : IB_local solution
+6) Bitwise ORs of Subarrays or Find a Value of a Mysterious Function Closest to Target : set won't have more than 32 elements as set is motonos
+7) subset with maximum XOR : gfg
+
+Backtracking:
+1) Largest number in atmost K swaps, gfg
+2) word search 1,2
+
+Greedy : 
+1) Activity selection problem: sort based on end time and keep adding from beginning 
 
 Stack/Queue:
 1) k stacks in single array : /Data Structures
 2) k queues in single array : /Data Structures
+
+Array:
+1) Kth smallest element in unsorted array:
+- heap O(nlogK)
+- quickSelect average/expected O(n)
+- random pivot average/expected O(n)
+- n/5 median method for O(n)
+
+Heap:
+1) find smallest k pairs from given two sorted arrays (bubbling down)
+https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84550/Slow-1-liner-to-Fast-solutions
+
+Sliding Window:
+1) #subarray with at most K distinct elements
+2) #subarray with exactly K distinct elements 1(K)-1(K-1)
+https://leetcode.com/problems/subarrays-with-k-different-integers/
+
+Bitmasking:
+- 10 person and hat problem
+- https://leetcode.com/contest/biweekly-contest-29/problems/parallel-courses-ii/
+- https://leetcode.com/problems/parallel-courses-ii/
 
 Noted:
 https://leetcode.com/discuss/interview-question/396418/Amazon-or-OA-2019-or-Point-of-Lattice

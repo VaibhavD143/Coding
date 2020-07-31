@@ -1,0 +1,81 @@
+Features:
+- users
+- user can add items to cart
+- user can search for an item
+- place order
+- wishlist
+
+Classes:
+user
+product
+cart
+orders
+ecommerce
+
+public class User{
+    private String id;
+    private String name;
+    //basic details//
+    private List<Product> wishList;
+    private Cart cart;
+    private List<Order> orders;
+
+    public boolean addProductToWishList(Product product){};
+    public boolean removeProductFromWishList(){};
+}
+
+private class Order{
+    private String id;
+    private Map<Product,Integer> orderProducts;
+    private timestamp placedDate;
+    private orderStatusEnum status;
+
+    public boolean updateStatus(orderStatusEnum status){};
+}
+public orderStatusEnum{
+    PLACED,
+    DELIVERED
+}
+
+private class Cart{
+    private String id;
+    private Map<Product,Integer> cartItems;
+    private double totalAmount;
+
+    public boolean addProduct(Product product){};
+    public boolean removeProduct(Product product){};
+    public void calculateBill(){};
+    public double getTotalAmount(){};
+    public Order checkOut(){};
+}
+
+private class Product{
+    private String id;
+    private String name;
+    private categoryEnum category;
+    private double price;
+}
+
+private class Amazon{
+    private Map<Product,Integer> inventory;
+    private List<User> users;
+    private List<Order> pastOrders;
+    private List<Order> activeOrders;
+
+
+    private boolean increamentStock(int count){};
+    private boolean decreamentStock(int count){};
+    private boolean addUser(User user){};
+    private boolean removeUser(User user){};
+    private Map<Product,Integer> showProductByName(String name){};   
+    private Map<Product,Integer> showProductByCategory(String category){};
+    private List<String> getNamesStartWith(String name){};
+    private List<categoryEnum> getNamesStartWith(String name){};
+}
+
+Doubt!
+1) where to put checkout and how will it be added to main Amazon class
+    - It should be with user cart only
+    - there will be some mechanism like socket or web to communicat between store and user
+2) as per the architeccture, how more than two customer will interact:
+    - there will be more one connection with store by individual user

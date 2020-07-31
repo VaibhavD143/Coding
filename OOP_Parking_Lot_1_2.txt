@@ -1,0 +1,78 @@
+Features:
+Vehicle : motorcycle=> small,medium,large,car=>medium,large ,Truck=>large
+Spot: small, medium, Large
+Single Entrances and Single Exits but shortest distance
+
+Use Cases:
+Vehicle:
+    List<spotType>, NumberPlate,ContactNo
+    - motorcycle
+    - car
+    - Truck
+Spot:
+    id,Rate
+    - small
+    - medium
+    - large
+Ticket:
+    id, timestamp,Vehicle,spot
+
+ParkinLot:
+    - List<Spot>
+    - smallStack
+    - mediumStack
+    - largeStack
+
+public Absract class Vehicle(){
+*    private List<SpotType> allowed;
+    private String NumberPlate;
+    private String ContactNo;
+    ....details....
+
+//    public List<SpotType> getAllowedSpotTypes();
+    public boolean isSpotAllowes(SpotType spotType);
+}
+
+public class motorcycle extends Vehicle(){
+}
+public class car extends Vehicle(){
+}
+public class Truck extends Vehicle(){
+}
+
+public class Spot(){
+    private String id;
+    private double ratePerHour;
+    private SpotType spotType;
+    private int distance;
+
+    private double getRatePerHour();
+    private SpotType getSpotType();
+}
+
+public enum SpotType{
+    SMALL,
+    MEDIUM,
+    LARGE
+}
+
+public class Ticket(){
+    private String id;
+    private timestamp arrivalTime;
+    private Vehicle vehicle;
+    private Spot spot;
+    
+    public double calculateBill(){};
+}
+
+public Abstract class ParkinLot{
+    private static PriorityQueue<Spot> smallSpots;
+    private static PriorityQueue<Spot> mediumSpots;
+    private static PriorityQueue<Spot> largeSpots;
+
+//    private Map<Ticket,Spot> occupied;
+    public boolean addSpot(Spot spot){};
+    public Ticket assignSpot(Vehicle vehicle);
+    public void blockSpot(Spot spot);
+    public boolean checkOut(Ticket ticket);
+}

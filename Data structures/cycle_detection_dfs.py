@@ -1,28 +1,6 @@
 """
 Working
 """
-# def is_cycle(graph,visited,source):
-#     cur_stck = [0]*len(graph)
-#     dq = [source]
-#     cur_stck[source] = 1
-
-#     while dq:
-#         elem = dq.pop(0)
-#         cur_stck[elem] = 1
-#         visited[elem] = 1
-#         for node in graph[elem]:
-#             if not cur_stck[node]:
-#                 dq.append(node)
-#             else:
-#                 return True
-#     return False
-# def driver(graph):
-#     visited = [0]*len(graph)
-
-#     for source in range(len(graph)):
-#         if not visited[source] and is_cycle(graph,visited,source):
-#             return True
-#     return False
 def isCyclicUtil( v, graph,visited, recStack): 
     visited[v] = True
     recStack[v] = True

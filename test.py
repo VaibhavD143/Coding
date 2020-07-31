@@ -1,35 +1,15 @@
-edges =[[0, 1], [0, 2], [1, 3], [2, 3], [2, 5], [5, 6], [3, 4]]
-nodes = 7
+mat= [[]]
+for i in range(1,len(mat)):
+    for j in range(len(mat[0])):
+        mat[i][j] +=mat[i-1][j]
 
-graph= [[] for _ in range(nodes)]
-for e in edges:
-    graph[e[0]].append(e[1])
-    graph[e[1]].append(e[0])
-
-seen =[False]*nodes
-dis = [-1]*nodes
-fin = [-1]*nodes
-parent = [None]*nodes
-res = set()
-def rec(u,time):
-    child = 0
-    fin[u] = dis[u] = time
-    seen[u] = True
-    for v in graph[u]:
-        if not seen[v]:
-            parent[v] = u
-            rec(v,time+1)
-            child+=1
-            fin[u] = min(fin[u],fin[v])
-
-            if parent[u] == None and child>1:
-                res.add(u)
-            elif parent[u] != None and fin[v]>=dis[u]:
-                res.add(u)
-        elif parent[v] != u:
-            fin[u] = min(fin[u],dis[v])
-    
-    return 
-
-rec(0,0)
-print(res)
+res = float('-inf')
+for r1 in range(len(mat)):
+    for r2 in range(r1,len(mat)):
+        sm = 0
+        for j in range(len(mat[0])):
+            sm+= mat[r2][j] - (mat[r1-1][j] if r1!=0 else 0)
+            res = max(res,sm)
+            if sm<0:
+                sm = 0
+return res

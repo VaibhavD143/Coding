@@ -1,0 +1,73 @@
+Number of items
+it will accept money and will return change
+Use case:
+- Items
+    -name
+    - price
+- VendingMachine
+    - inventory
+    - denominations
+- denomination
+- inventory
+
+public class Item{
+    private String id
+    private String name
+    private Float Price
+
+    public Float getPrice(){};
+}
+
+public class Denomination{
+    private String id;
+    private Int Value;
+}
+
+public class stockItem{
+    private Item item;
+    private Integer stock;
+}
+
+public class Inventory{
+    private List<stockItem> warehouse;
+    private Map<Item,Integer> warehouse;
+
+    public List<Item> getItems(){};
+    public boolean add(Item item){};
+    public boolean remove(Item item){};
+    public boolean doesExist(Item item){};
+}
+
+
+public class Cart{
+    private Map<Item,Integer> orderList;
+    private Float totalAmount;
+
+    public bool addItem(Item){};
+    public bool removeItem(Item){};
+    public Float calculateAmount(){};
+}
+
+Public class VendingMachine{
+    private Inventory inventory;
+    private Cart cart;
+    private genderEnum gender;
+
+    public Map<Item,Float> showMenu();
+    public void restock(Item item){};
+//    public Integer getStock(Item item){};
+//    public bool selectItem(Item item);
+//    public bool removeItem(Item item);
+    public List<Denomination> checkout(List<Denomination> acceptedMoney){};
+    public bool updateInventory(){};
+}
+
+public enum genderEnum{
+    MALE,
+    FEMALE,
+    OTHER
+}
+
+Lesson:
+use primitive
+int,double,boolean,List,String,Map,char

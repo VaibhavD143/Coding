@@ -111,3 +111,7 @@ class Solution:
 
 *)How to rotate co-ordinates in graph:
 https://leetcode.com/discuss/interview-question/396418/Amazon-or-OA-2019-or-Point-of-Lattice
+
+*)Bubling down process:
+- find smallest k pairs from given two sorted arrays (bubbling down)
+https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84550/Slow-1-liner-to-Fast-solutions

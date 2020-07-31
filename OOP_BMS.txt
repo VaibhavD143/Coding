@@ -1,0 +1,69 @@
+Use cases:
+- Users
+- Bookings
+- Theaters
+- Movies
+
+class User:
+    id : int
+    name : String
+    ....details...
+    List<Booking> Booking
+
+class Movie:
+    id : Int
+    name: String
+    List<Theater> theaters
+
+class Booking:
+    id : int
+    booked_data : timestamp 
+    List<Seat> booked_seats
+    theater : Theater
+    User_id : User
+    payment : Payment
+
+class Payment:
+    id : int
+    ...details...
+    amount : float
+    transaction_time : timestamp
+
+class Theater:
+    id : int
+    name : string
+    address : Address
+    movie : Movie
+    List<Seat> seats
+
+Abstract class Seat:
+    id : int
+    is_booked : Boolean
+    price : float
+
+class Gold extends Seat:
+
+class Prime extends Seat:
+
+class Normal extends Seat:
+
+
+class Address:
+    id : int
+    city : String
+    local : String
+    pincode : String
+
+class BMS:
+    List<Theater> theaters
+    List<User> users
+    List<Movie> movies
+    List<Booking> bookings
+
+    getTheatersByMovie(movie: Movie):List<Theater> theaters
+    ..same methods...
+    
+    bookTicket(user: User, theater : Theater, List<Seat> seats) : Booking
+    viewBooking(user: User) : List<Booking>
+    cancelBooking(booking: Booking) : boolean
+    
