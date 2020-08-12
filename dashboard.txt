@@ -13,6 +13,10 @@ Revise:
 - shortest path in DG with -ve cycle - bell man ford
 - rabin karp for pattern matching
 - all pair shortest path - floyd warshall
+- union by rank and path compression
+- python code cycle
+- python namespace and scope
+- java code cycle
 Python:
     - dict working
     - large number handaling
@@ -29,17 +33,18 @@ To-Do:
 - Median of two sorted array
 - Meet in the middle
 - Python:
-    - architecture and life cycle of code
     - itertools.tee #find kth smallest sum of sorted matrix 76ms solution
 - Randomised (n/5) algo for finding median 
 - Z-array algo
 - sortedcontainers for BST
 https://leetcode.com/discuss/interview-question/system-design/719253/Design-Facebook-%3A-System-Design-Interview
 - Multi-threading concept
-- What is JDBC?
+`- What is JDBC?
+
 
 
 Idea:
 - pop in tuple cancel : mutability will go away and that will make it vunerable in dictionary
 - slicing in deque
 - updation in heap
+

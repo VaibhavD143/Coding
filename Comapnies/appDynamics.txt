@@ -1,0 +1,44 @@
+IIITH doc
+
+*) There are several factors that affect the efficiency of lookup operations in a hash table.
+Which of the following is not one of those factors?
+A. Number of elements stored in the hash table
+_. Size of elements stored in the hash table
+C. Number of buckets in the hash table
+D. Quality of the hash function
+E. All of the above factors affect the efficiency of hash table lookups 
+
+*) 
+int a = 2;
+float b = 3;
+double c = 445;
+long d = 45432;
+
+expression (a+b)*(c+d) will cast to?
+_: double, expression doesn't matter
+long double > double > float > unsigned long long > long long > unsigned long > long > unsigned int > int
+
+*) Program counter start with address 200 and instruction size is 24-bit then legal adress would be multiple of 3(24/8=3)
+230
+215
+not 220
+not 225
+
+*)How many variables are suffiecient for below expression in three address code?
+q+r/3+s−t∗5+u∗v/w
+t1=r/3; 
+t2=t∗5;
+t3=u∗v;
+t4=t3/w;
+t5=q+t1;
+t6=t5+s;
+t7=t6−t2;
+t8=t7+t4
+ans: >=8
+
+
+Topics:
+DSA
+Complexity analysis
+Probability
+B-tree

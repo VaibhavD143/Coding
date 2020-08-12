@@ -1,0 +1,42 @@
+user:
+    id
+    name
+    List<Book> issuedBook;
+    allowedBook;
+    noOfIssuedBook;
+
+    issuedBook(book,user)
+    returnBook(Book)
+    renewBook(Book)
+
+admin:
+    addBook
+    removeBook
+    addUser
+    removeUser;
+
+
+reservation:
+    user
+    book
+    issuedDate
+    dueDate
+    status
+
+    updateStatus
+
+books:
+    id
+    name
+    List<String> authors;
+    isReferencebook;
+    user user;
+    isIssued;
+    //metadata//
+
+    updateStatus();
+    assignUser();
+catlog:
+    list<book> books;
+
+    //crud//

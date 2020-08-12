@@ -65,7 +65,7 @@ private class Cart{
     public boolean isMember(){};
 }
 
-interface IPatmentService{
+interface IPaymentService{
     final int billAmount;
     public boolean doPayment(){};
 }

@@ -2,6 +2,27 @@
 Disjoint Union algo with and without Union-by-rank
 https://leetcode.com/articles/redundant-connection/
 """
+
+def union(i1,i2):
+    p1 = find(i1)
+    p2 = find(i2)
+    
+    if p1 == p2:
+        return
+    if rank[p1]>rank[p2]:
+        p1,p2 = p2,p1
+    
+    parent[p1] = p2
+    rank[p2]+=1
+
+def find(i1):
+    if parent[i1] != i1:
+        parent[i1] = find(parent[i1])
+    return parent[i1]
+
+parent = list(range(len(A)))
+rank = [0]*len(A)
+
 class DSUwithputRank:
     def __init__(self):
         self.par = list(range(1001))
