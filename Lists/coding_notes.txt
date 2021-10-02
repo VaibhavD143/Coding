@@ -26,10 +26,17 @@ In this case using trie has only O(m) time complexity, where mm is the key lengt
 *) Delete node whose only pointer is given and no head pointer:
 - copy data from next pointer, and delete next node
 
+*) Number of binary search tree from N unique numbers:
+- C(2n,n)/(n+1)
+
+*) power(A,power(B,C), M) = power(A,power(B,C,M-1),M))
+
+*) Derangement formula : Dp[i] = (i-1)*(dp[i-1]+dp[i-2])
+
 *) Bit manipulation:
 - x & (x-1) : will clear the lowest set bit of x
 - x & -x : will get you lowest set bit of x
-- x | (x + 1) = x with the lowest cleared bit set.
+- x | (x + 1) : x with the lowest cleared bit set.
 For iterating over all possible submasks of mask
 sub = mask
 while sub:
@@ -56,6 +63,7 @@ Don't understand
 -   a=a^b
     b=a^b
     a=a^b
+
 *) 32-bit range = -2*(32-1) to (2**(32-1))-1
 
 *) Prime factorization:
@@ -101,17 +109,37 @@ class Solution:
         res= ''.join(A).lstrip('0')
         return  res if res else '0'
 
-*)Slope representation as a tuple:
+*) Slope representation as a tuple:
     - to avoid precision issue in slope, we can representate them as tuple like slope 1/3,2/6,3/9 as (1,3)
     - that, this is representate slope as coprime integers
 
-*)To make two numbers co-prime of each other :
+*) To make two numbers co-prime of each other :
     - Find gcd of both numbers and divide both number with gcd, resulting number would be co-prime of each other
     - ex : a =12,b=30 gcd = 6 a=2 b=5
 
-*)How to rotate co-ordinates in graph:
+*) Mod with negative number will return negative number
+x = ((x % k) + k) % k ;
+
+*) How to rotate co-ordinates in graph:
 https://leetcode.com/discuss/interview-question/396418/Amazon-or-OA-2019-or-Point-of-Lattice
 
-*)Bubling down process:
+*) Bubling down process:
 - find smallest k pairs from given two sorted arrays (bubbling down)
 https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84550/Slow-1-liner-to-Fast-solutions
+
+*) egg drop problem:
+- 2 egss K floors
+    - f[n] = min(max(x, f(n-x)) for x in [1,n])
+    - O(1) co-efficient is possible
+        - x + (x-1) + (x-2) + .... + 2 + 1 = x*(x + 1) /2 >= k
+- n eggs k floors
+    - f[trial][eggs] = f[trial-1][eggs-1] + f[trial-1][eggs] + 1
+    - https://leetcode.com/problems/super-egg-drop/
+
+*) Tree Definitions:
+- Full Binary tree : All nodes have either 0 or 2 children
+- Complete Binary tree : All the levels are completely filled except last level. Last level have all the nodes places left most.
+- Perfect Binary Tree: All leaf nodes are at same level and all the Internal nodes have either 2 children
+- Balanced Binary Tree: Height of the tree is log(N). Height difference betweenany two leaf node would be no more than 1
+- Degenerate/Skewed Tree: Every internal node has only one child
+- 

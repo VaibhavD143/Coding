@@ -5,7 +5,7 @@ Revise:
 - Bit masking (hat Problem)
 - inversion pair
 - Egg Problem
-- Grapg Theory
+- Graph Theory
 - prims - start from src and update adjacents
 - krushkal - pick minimum edge till there is n-1 edges
 - shortest path in DAG - topological sort
@@ -26,7 +26,7 @@ Python:
     - set working
     - deque
     - lambda functions
-    - itertools.islice() : provide iterable and left,right boundary, just slicing tool
+    - itertools.islice() : provide iterable and left,right boundary, just a slicing tool
 - https://leetcode.com/problems/single-number-ii/discuss/43295/Detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers
 
 To-Do:
@@ -46,5 +46,4 @@ https://leetcode.com/discuss/interview-question/system-design/719253/Design-Face
 Idea:
 - pop in tuple cancel : mutability will go away and that will make it vunerable in dictionary
 - slicing in deque
-- updation in heap
-
+- updation in heap cancel: O(n) operation

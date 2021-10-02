@@ -1,0 +1,88 @@
+Print array:
+1-D : Arrays.toString(arr);
+M-D : Arrays.deepToString(arr)
+
+To store multiple values in a same key:
+Map<Integer,int[]> ha = new HashMap<>();
+
+ha.put(key,new int[2]);
+lst = ha.get(key)
+lst[0] = 1;
+lst[1] = 2;
+OR
+ha.put(key, new int[]{1, 2});
+
+Map<Integer,CustomObject> ha = new HashMap<>();
+
+Collections.reverse(ArrayList);
+Collections.reverse(Arrays.asList(primitiveArray));
+Collections.max(Arrays.asList(ArrayList/LinkedList/non-primitive DS));
+
+Min/Max:
+Collections.max(Arrays.asList(ArrayList/LinkedList/non-primitive DS));
+primitive arrays:
+OptionalInt y = Arrays.stream(arr).max();
+int max = y.getAsInt();
+
+
+StringBuilder sb = new StringBuilder(str);
+sb.reverse().toString();
+
+System.arraycopy(a, 0, b, 2, 3); : Copy to array `b` starting from index 2 from `a` starting from index 0 for length 3
+
+int arr[] = new int[10]; => arr.length
+ArrayList<> ...........  => arr.size()
+String                   => arr.length()
+
+Arrays.fill(arr[],value);
+#this will not fulfill purpose as it will assign same referece of LinkedList
+LinkedList<Integer> ind[] = new LinkedList[10];
+Arrays.fill(ind,new LinkedList<Integer>());
+
+Input:
+Scanner class offers different methods to take Input
+Scanner sc = new Scanner(System.in[source]);
+sc.nextLine().split() to get space seperated as String[]; then run a loop to convert it to particular type
+Or
+for(String s:sc.nextLine().split(" ")){
+    row.add(Integer.parseInt(s));
+}
+
+LinkedList:
+Stack:
+push() pop()
+
+PriorityQueue:
+public class myComp implements Comparator<T>{
+    public int compare(T a, T b){
+        //logic
+        return -1,0,1;
+    }
+}
+Queue<T> q = new PriorityQueue<>(new myComp());
+
+[] -> interface
+
+[List] -> Vector -> Stack<T> ss :
+  - ss.empty(), .push(), .pop(), .peek() : read and not pop top element, .size()
+
+[Queue] -> PriorityQueue :
+  - .offer(), .poll(), .peek()
+
+[Queue] -> [Deque] -> ArrayDeque :
+  - .offer(), .poll() : removes first element, .peek() : read  but pop first element
+
+[Queue] -> [Deque] -> LinkedList :
+  - ss.offer() , ss.pollLast() : to remove last added element, ss.peekLast(): to read last added element
+
+
+We can overload main method but JVM will call only actual method. we can call overloaded method from actual main method.
+
+new keyword allocates memory for an object at runtime and all objects get memory in heap memory area.
+
+Pending:
+- Priority Queue ,https://leetcode.com/problems/min-cost-to-connect-all-points/discuss/844107/Java-Minimum-Spanning-Tree-and-Union-Find-with-Optimization-Beat-100
+- offer() vs add() vs push()
+- poll() vs remove() vs pop()
+- peek() vs get() vs 
+- How do we use < > = with Integer types?

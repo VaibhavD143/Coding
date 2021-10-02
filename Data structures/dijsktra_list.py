@@ -190,7 +190,7 @@ class Graph():
 		printArr(dist,V) 
 
 
-# Driver program to test the above functions 
+# Driver program to test the above functions minHeap.isInMinHeap(v)
 graph = Graph(9) 
 graph.addEdge(0, 1, 4) 
 graph.addEdge(0, 7, 8) 

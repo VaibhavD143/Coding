@@ -8,4 +8,4 @@ def find_expo(bas,expo,mod):
 		expo = expo//2
 	return temp%mod
 
-print(find_expo(2,7,10005),(2**7)%10005)
+print(find_expo(2,7,10005),(2**7)%10005)			

@@ -10,8 +10,8 @@ class Solution:
     # @param A : string
     # @param B : string
     # @return an integer
-    def strStr(self, A, B):
-        if not A or not B:
+    def strStr(self, pat, txt):
+        if not pat or not txt:
             return -1
         # lps=[0]
         def computeLPS(pat):
@@ -29,15 +29,15 @@ class Solution:
                     if length !=0:
                         length=lps[length-1]
                     else:
-                        lps[0]=0
+                        lps[i]=0
                         i+=1
             return lps
-        lps = computeLPS(B)
+        lps = computeLPS(pat)
         i=0
         j=0
         res=[]
-        while i<len(A):
-            if B[j] == A[i]:
+        while i<len(txt):
+            if pat[j] == txt[i]:
                 i+=1
                 j+=1
                 
@@ -46,7 +46,7 @@ class Solution:
                     j=lps[j-1]
                 else:
                     i+=1
-            if j==len(B):
+            if j==len(pat):
                 # return i-j
                 res.append(i-j)
                 j=lps[j-1]

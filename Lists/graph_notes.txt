@@ -6,12 +6,29 @@ mother vertex:
         - apply DFS from v and if it reaches all the nodes then that's out mother vertex
     
 Topological sort:
-    - can be done using in-degree and out-degree count of the nodes(Kahn's Algorithm)
+    - DFS :
+        - DFS on graph, add to the stack after visiting all the adjacents
+        - topological order : starting from the last added element
+    - Kahn's Algorithm:
+        - in-degree and out-degree count of the nodes(Kahn's Algorithm)
 
 Strongly Connected Graph:
 	- A directed graph is strongly connected if there is a path between all pairs of vertices. A strongly connected component (SCC) of a directed graph is a maximal strongly connected subgraph.
-    - DFS,stack ordered on their finishing time,
-    - Pop last added element,do DFS on it.Repeat and get components
+    - Is SC?
+        - Undirected Graph:
+            - DFS from any node
+        - Directed Graph:
+            - Leverage Kosarjun's Algorithm : DFS from v (all nodes are reachable from v), transpose of graph, again DFS from v(v is reachable from all the nodes)
+            - https://www.geeksforgeeks.org/connectivity-in-a-directed-graph/
+    - Strongly connected components:
+        - Directed Graph:
+            - Kosarjun's Algo:
+                - DFS over all the nodes, add to the stack after visiting adjacents
+                - transpose graph
+                - Pop node from stack and do DFS. each iteration will give one SCC.
+                - https://www.geeksforgeeks.org/strongly-connected-components/
+            - Tarjan's Algo:
+                - 
 
 DFS Applicatins:
 - path finding(not shortes path)
