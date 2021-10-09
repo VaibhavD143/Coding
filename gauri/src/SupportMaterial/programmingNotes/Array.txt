@@ -1,0 +1,696 @@
+ARRAYS
+PEAK VALLEY APPROACH:MAX PROFIT BY INFINITE STOCK BUY SELL
+CONSECUTIVE DIFFERENCE: MIN NO OF INC. ON SUBARRAY TO FORM TARGET ARRAY
+MIN JUMPS TO REACH END
+SLIDING WINDOW: MAXIMUM POINTS YOU CAN OBTAIN FROM CARDS
+2 POINTER APPROACH: MAX WATER CONTAINER
+USING MAX ELEMENT ON LEFT/RIGHT TECHNIQUE: TOTAL RAINWATER TRAPPING
+USING MAX ELEMENT ON LEFT/RIGHT TECHNIQUE: MAXIMUM DISTANCE: MAX j-i WHERE arr[j]>arr[i]
+FIRST POSITIVE MISSING NUMBER
+MERGE SORT: INVERSION PAIR:EASY
+SWAP: ZIG-ZAG MAINTAIN RELATIVE ORDERING
+PIGEONHOLE PRINCIPLE WITH BUCKETING: MAXIMUM CONSECUTIVE GAP:
+CUSTOM SORT: LARGEST NUMBER
+HASHING: NO OF SUB-ARRAYS WITH SUM EQUAL TO K
+KADANE'S ALGO: MAX CONTINUOUS SUBARRAY
+MERGE INTERVAL: ADD NEW INTERVAL AND MERGE
+PnC:
+    NEXT PERMUTATION
+3 SUM TECHNIQUE
+------------------------------------------------------------------------------------------------------------------------
+
+PEAK VALLEY APPROACH:MAX PROFIT BY INFINITE STOCK BUY SELL
+
+ref:
+https://leetcode.com/articles/best-time-to-buy-and-sell-stock-ii/
+
+problem:
+Array_lc_buy_sell_stock_multiple_transactions
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/submissions/
+
+If we analyze the graph, we notice that the points of interest are the consecutive valleys and peaks.
+Mathematically speaking: Total Profit= \sum_{i}(height(peak_i)-height(valley_i))TotalProfit=∑
+
+The key point is we need to consider every peak immediately following a valley to maximize the profit.
+In case we skip one of the peaks (trying to obtain more profit), we will end up losing the profit over one of
+the transactions leading to an overall lesser profit.
+
+For example, in the above case, if we skip peak_i and valley_j trying to obtain more profit by
+considering points with more difference in heights, the net profit obtained will always be lesser than the one
+obtained by including them, since C will always be lesser than A+B.
+
+ public int maxProfit(int[] pr) {
+        int v=0;
+        int p=0;
+        int sum=0;
+
+        int i=0;
+        while(i<pr.length-1){
+            while(i<pr.length-1 && pr[i]>=pr[i+1])
+                i++;
+            v=pr[i];
+            while(i<pr.length-1 && pr[i]<=pr[i+1])
+                i++;
+            p=pr[i];
+            sum+=(p-v);
+        }
+        return sum;
+
+    }
+------------------------------------------------------------------------------------------------------------------------
+
+CONSECUTIVE DIFFERENCE: BUY SELL STOCK INFINITE TIMES
+whenever next element is > current element we simply consider that as a profit. 1,5,8. because (5-1)+(8-5)==(8-1).
+
+CONSECUTIVE DIFFERENCE: MIN NO OF INC. ON SUBARRAY TO FORM TARGET ARRAY
+
+Problem:
+Array_lc_minimum_inc_on_subarray_to_form_target_array
+https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/
+
+Input: target = [3,1,5,4,2]
+Output: 7
+Explanation: (initial)[0,0,0,0,0] -> [1,1,1,1,1] -> [2,1,1,1,1] -> [3,1,1,1,1]
+                                  -> [3,1,2,2,2] -> [3,1,3,3,2] -> [3,1,4,4,2] -> [3,1,5,4,2] (target).
+This appears to be an O(n2) soln but the soln is very simple.
+The idea is to keep tracking the num of up steps. So every time we go up we increase the counter
+by the different between the current steps and the previous step. And once we go down we don't do anything.
+
+public class Array_lc_minimum_inc_on_subarray_to_form_target_array {
+    public int minNumberOperations(int[] t) {
+        if(t==null||t.length==0) return 0;
+        int cnt=t[0];
+        for(int i=1;i<t.length;++i){
+            if(t[i]>t[i-1])
+                cnt+=(t[i]-t[i-1]);
+        }
+        return cnt;
+    }
+
+------------------------------------------------------------------------------------------------------------------------
+MIN JUMPS TO REACH END
+
+Ref:
+https://www.geeksforgeeks.org/minimum-number-jumps-reach-endset-2on-solution/
+Problem:
+Array_lc_jump_game_min_jumps
+https://leetcode.com/problems/jump-game-ii/
+https://www.interviewbit.com/problems/min-jumps-array/
+
+tc= O(n) sc=O(1)
+
+Variables to be used:
+-maxReach The variable maxReach stores at all time the maximal reachable index in the array.
+-step The variable step stores the number of steps we can still take(and is initialized with value at index 0, i.e.
+initial number of steps)
+-jump jump stores the amount of jumps necessary to reach that maximal reachable position.
+
+Given array arr = 1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9
+
+maxReach = arr[0]; // arr[0] = 1, so the maximum index we can reach at the moment is 1.
+step = arr[0]; // arr[0] = 1, the amount of steps we can still take is also 1.
+jump = 1; // we will always need to take at least one jump.
+Now, starting iteration from index 1, the above values are updated as follows:
+First we test whether we have reached the end of the array, in that case we just need to return the jump variable.
+if (i == arr.length - 1)
+    return jump;
+Next we update the maxReach. This is equal to the maximum of maxReach and i+arr[i](the number of steps we can take from
+the current position).
+maxReach = Math.max(maxReach, i+arr[i]);
+We used up a step to get to the current index, so steps has to be decreased.
+step--;
+If no more steps are remaining (i.e. steps=0, then we must have used a jump. Therefore increase jump. Since we know that
+it is possible somehow to reach maxReach, we again initialize the steps to the number of steps to reach maxReach from
+position i. But before re-initializing step, we also check whether a step is becoming zero or negative. In this case,
+it is not possible to reach further.
+if (step == 0) {
+    jump++;
+    if(i>=maxReach)
+       return -1;
+    step = maxReach - i;
+}
+
+    public int jump(int[] arr) {
+        if(arr.length<=1) return 0;
+
+        int mxReach=arr[0], steps=arr[0], jumps=1;
+        for(int i=1;i<arr.length;++i){
+            if(i==arr.length-1)
+                return jumps;
+            mxReach= Math.max(mxReach, arr[i]+i);
+            steps--;
+            if(steps==0){
+                jumps++;
+                if(i==mxReach)
+                    return -1;
+                steps=mxReach-i;
+            }
+        }
+        return -1;
+    }
+
+
+    OR
+
+     public int jump(int[] nums) {
+        if(nums.length<=1) return 0;
+        if(nums[0]==0) return -1;
+
+        int jumps=1;
+        int maxReach=nums[0];
+        int curr=nums[0];
+
+        for(int i=1;i<nums.length-1;++i){   //note the condition
+            maxReach=Math.max(maxReach, nums[i]+i);
+            if(maxReach==i) return -1;
+            if(i==curr){
+                jumps++;
+                curr=maxReach;
+            }
+        }
+        if(maxReach<nums.length-1) return -1;
+        return jumps;
+     }
+------------------------------------------------------------------------------------------------------------------------
+
+SLIDING WINDOW: MAXIMUM POINTS YOU CAN OBTAIN FROM CARDS
+
+ref:
+https://www.geeksforgeeks.org/collect-maximum-points-array-k-moves/
+https://www.youtube.com/watch?v=1DkVU2i3sOA         (1:30 to 2:30)
+problem:
+Array_lc_max_point_you_can_obtain_from_cards
+https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
+
+Sometimes it's not easy to identify if a problem falls under sliding window problem set.
+Here it might seem like a dp problem where we have to choose elements once form the left and once from the right.
+However if we notice closely there is a window more of a broken window a part of which is in the initial part and the
+remaining in the latter.
+Find sum of initial k elements. Now remove the innermost element form left and add innermost element to right. keep
+track of max sum. repeat this until the entire of window shifts from left to right.
+
+    public int maxScore(int[] c, int k) {
+        if(c.length==0||k==0) return 0;
+        int sum=0;
+        for(int i=0;i<k && i<c.length; ++i)
+            sum+=c[i];
+        if(k>=c.length)
+            return sum;
+        int max=sum;
+        for(int i=0;i<k;++i){
+            sum=sum-c[k-i-1]+c[c.length-1-i];
+            max=Math.max(max,sum);
+        }
+        return max;
+    }
+
+//similar concept problem:
+https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
+
+------------------------------------------------------------------------------------------------------------------------
+
+2 POINTER APPROACH: MAX RAINWATER TRAPPING
+
+prob:
+Pointer_ib_water_container
+https://www.interviewbit.com/problems/container-with-most-water/
+
+Here we do now need to cal the total water trapped but the max water that can be trapped.
+1. begin by l/r pointers set at extreme ends.
+2. ht of water is the min ht of the two. Therefore max water= minvalue*(r-l+1);
+3. ht is determined by the min value so if we move the min ht pointer then total water will only dec. therefore we move
+the pointer!=ht. calc maxwater again and continue the process till l<r.
+
+    public int maxArea(ArrayList<Integer> A) {
+        int l=0,r=a.size()-1;
+        int sum=0;
+        while(l<r){
+            int minHt=Math.min(a.get(l),a.get(r));
+            sum=Math.max(sum, minHt*(r-l));
+            if(minHt==a.get(l))
+                l++;
+            else
+                r--;
+        }
+        return sum;
+    }
+
+------------------------------------------------------------------------------------------------------------------------
+
+USING MAX ELEMENT ON LEFT/RIGHT TECHNIQUE: RAINWATER TRAPPING
+
+ref:
+https://www.youtube.com/watch?v=FbGG2qpNp4U
+
+prob:
+Array_lc_rainwater_trapping
+https://leetcode.com/problems/trapping-rain-water/submissions/
+
+we are given an array containing height of bars. Find total water it can trap.
+For every i find the greatest ht on the right and the left including current ht itself. Now traverse again. For each bar
+the water that can be trapped in that cell is the total ht of water possible(obtained through the min of left and right
+max) minus the occupied area ie. ht of the bar.
+
+    public int trap(int[] h) {
+        int lmax[]= new int[h.length];//contains the max element on left including itself
+        int rmax[]= new int[h.length];//contains the max element on right including itself
+
+        int max=0;
+        for(int i=0;i<h.length;++i){
+            max=Math.max(h[i],max);
+            lmax[i]= max;
+        }
+
+        max=0;
+        for(int i=h.length-1;i>=0;--i){
+            max=Math.max(h[i],max);
+            rmax[i]= max;
+        }
+
+        int sum=0;
+        for(int i=0;i<h.length;++i)
+            sum+= Math.min(lmax[i],rmax[i])-h[i];
+        return sum;
+    }
+------------------------------------------------------------------------------------------------------------------------
+
+USING MAX ELEMENT ON LEFT/RIGHT TECHNIQUE: MAXIMUM DISTANCE: MAX j-i WHERE arr[j]>=arr[i]
+
+Ref:
+https://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/
+
+Prob:
+Array_ib_maximum_distance
+https://www.interviewbit.com/problems/max-distance/
+
+Algo:
+1. For all cells pre compute min left element and max right element including the current cell value.
+2. now traverse both simultaneously from the beginning.
+While traversing LMin[] and RMa[] if we see that LMin[i] is greater than RMax[j], then we must move ahead in LMin[] (or
+do i++) because all elements on left of LMin[i] are greater than or equal to LMin[i]. Otherwise we must move ahead in
+RMax[j] to look for a greater j – i value.
+
+In general for questions involving i<j, arr[j]>arr[i] type requirements try using the Lmin/Rmin/Lmax/Rmax in some form.
+Always helps.
+
+    public int maximumGap(final int[] a) {
+        if(a.length==0) return 0;
+        int sml[]=new int[a.length];
+        int bgr[]=new int[a.length];
+        sml[0]=a[0];
+        bgr[a.length-1]=a[a.length-1];
+
+        for(int i=1;i<a.length;++i)
+            sml[i]=Math.min(sml[i-1],a[i]);
+        for(int i=a.length-2;i>=0;--i)
+            bgr[i]=Math.max(bgr[i+1],a[i]);
+
+        int mx=0;
+        int ss=0,bb=0;
+        while(ss<a.length && bb<a.length){
+            if(sml[ss]>bgr[bb]){
+                ss++;
+            }
+            else{
+                mx=Math.max(mx, bb-ss);
+                bb++;
+            }
+
+        }
+        return mx;
+    }
+
+------------------------------------------------------------------------------------------------------------------------
+
+FIRST POSITIVE MISSING NUMBER
+
+Prob:
+Array_ib_first_missing_positive_integer
+
+Traverse array once. Ignore all -ve numbers and put the +ve numbers
+on index (no-1). ie if we get no 5, we swap it with element at index 4. For numbers greater than a.length we ignore them.
+Now traverse the array again. The first index which we find where no is not equal to it's index, we get our ans as
+index+1.
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+MERGE SORT: INVERSION PAIR:EASY
+
+checkout: Array_lc_count_of_range_sum_merge_sort(similar concept)
+
+Find count of inversion pairs where a[i] and a[j] form an inversion if a[i] > a[j] and i < j.
+
+Use divide and conquer technique (application of merge sort).
+1. We divide until there is just a single element left.
+2. At the time of merge, the left and the right parts of the area being considered are individually sorted and we merge
+them again to give sorted order.
+3. While merging if left side element is smaller or "EQUAL" then count doesn't change. If it is larger then inc count by:
+no of elements in the left array that are smaller than the right element. And that shall be = counter-(mid+1).
+
+    public static long inversionPair(int arr[], int l,int r){
+	    if(l<r){
+	        int mid=l+(r-l)/2;
+	        return inversionPair(arr,l,mid)+inversionPair(arr,mid+1,r)+merge(arr,l,r, mid);
+	    }
+	    return 0;
+	}
+
+	public static long merge(int[]arr, int l, int r, int mid){
+	    if(l==r)return 0;
+
+	    int i=l;
+	    int j=mid+1;
+	    long c=0;
+	    int temp[]=new int[r-l+1];
+	    int tc=0;
+	    while(i<=mid&&j<=r){
+	        if(arr[j]>=arr[i]){     //just understand that <= is being used instead of just <
+	            c+=(j-(mid+1));
+	            temp[tc++]=arr[i++];
+	        }
+	        else
+	            temp[tc++]=arr[j++];
+	    }
+	    while(i<=mid){
+	        c+=(j-(mid+1));
+	        temp[tc++]=arr[i++];
+	    }
+	    while(j<=r)
+	        temp[tc++]=arr[j++];
+
+	    for(i=0;i<temp.length;++i)
+	        arr[l+i]=temp[i];
+
+	    return c;
+	}
+
+------------------------------------------------------------------------------------------------------------------------
+
+SWAP: ZIG-ZAG MAINTAIN RELATIVE ORDERING
+
+Problem:
+Array_gfg_zigzag_relative_ordering
+https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion/0
+
+Question:
+Rearrange the elements of array in zig-zag fashion. The converted array should be in form a < b > c < d > e < f. The
+relative order of elements is same in the output
+
+Approach:
+In a general case zig zag ordering sort the array and swap adjacent pairs.
+
+For an ordering where we need to maintain relative ordering, simply check element with the next one to see if zigzag
+order is being maintained otherwise swap.
+
+------------------------------------------------------------------------------------------------------------------------
+
+PIGEONHOLE PRINCIPLE WITH BUCKETING: MAXIMUM CONSECUTIVE GAP
+
+Ref:
+https://leetcode.com/articles/maximum-gap/#
+
+Prob:
+Array_ib_maximum_consecutive_gap
+https://leetcode.com/problems/maximum-gap/submissions/
+
+1. The Pigeonhole Principle states that if n items are put into m containers, with n>m , then at least one container
+must contain more than one item.
+2. So here we can say that for n elements we should take n-1 buckets for there to be at least one bucket that has 2
+elements.
+3. Now coming to the capacity, for n-1 buckets and range of (max-min) the cap should be t=(max−min)/(n−1). ie. each
+bucket will hold a max of t range of numbers. ie the diff btw the numbers would be a max of t. To stay on the safer side
+we take a smaller gap to be on the safer side so that by any chance the diff within a bucket doesn't become t.
+4. Since the cap changed we'll calculate the no of buckets again. now buckets= (max−min)/capacity  +1. (why +1? LATER)
+5. place elements in their correct buckets. index of bucket will be calculated as is (element-min)/cap.
+6. at the time of placing elements keep track of min and max for each bucket.
+7. now considering only the buckets which have an item find the diff btw curr bucket min and prev bucket max.
+
+now why this plus one?
+If array is [1,100] and current element=100 & min=1 then :
+cap=(100-1)/1=99, no of buckets= 99/99=1 and for element =100, when we calc the index of bucket then (100-1)/99 gives 1
+so we go out of array index. Hence we take one more bucket.
+
+    public int maximumGap(final int[] a) {
+        if(a.length<=1) return 0;
+        int min=Integer.MAX_VALUE, max=Integer.MIN_VALUE;
+        for(int x:a){
+            min=Math.min(min,x);
+            max=Math.max(max,x);
+        }
+        if(max-min==0)
+            return 0;
+
+        int cap=Math.max(1,(max-min)/(a.length-1)); //important to take max with 1. otherwise we might get result as 1.
+        int noOfBuck= (max-min)/cap +1;
+        int mxb[]= new int[noOfBuck];
+        int mnb[]= new int[noOfBuck];
+        Arrays.fill(mxb, Integer.MIN_VALUE);
+        Arrays.fill(mnb, Integer.MAX_VALUE);
+
+        for(int x:a){
+            int val=x-min;
+            int i= val/cap;
+            mxb[i]=Math.max(x,mxb[i]);
+            mnb[i]=Math.min(x,mnb[i]);
+        }
+        // System.out.println(Arrays.toString(mxb));
+        // System.out.println(Arrays.toString(mnb));
+        int mxdiff=mxb[0]-mnb[0];
+        int lastmin=mxb[0];
+        for(int i=1;i<mxb.length;++i){
+            if (mnb[i]==Integer.MAX_VALUE && mxb[i]==Integer.MIN_VALUE)
+                continue;
+            mxdiff=Math.max(mxdiff, mnb[i]-lastmin);
+            lastmin=mxb[i];
+            // System.out.println(mxdiff+" "+ lastmin);
+        }
+        return mxdiff;
+    }
+
+------------------------------------------------------------------------------------------------------------------------
+
+LARGEST NUMBER: REMEMBER EDGE CASES
+
+Prob:
+Array_ib_largest_number
+https://www.interviewbit.com/problems/largest-number/
+
+For algorithms where string is being modified in every iteration remember to use string buffer instead. Otherwise we
+might get TLE!!.
+Also for any code where numbers are being stored as String we shall always have an edge case where s="00000". This needs
+to be handled by removing the extra zeros.
+
+    public String largestNumber(final List<Integer> a) {
+        Collections.sort(a, new CustomComp());
+        StringBuffer s = new StringBuffer();// take string buffer otherwise TLE
+        for(int x:a)
+            s.append(x);
+        return s.charAt(0)=='0'?"0":s.toString();
+    }
+
+    class CustomComp implements Comparator<Integer> {
+        public int compare(Integer a, Integer b){
+            String x=a+""+b;
+            String y=b+""+a;
+            return -x.compareTo(y);
+        }
+    }
+------------------------------------------------------------------------------------------------------------------------
+
+HASHING: NO OF SUB-ARRAYS WITH SUM EQUAL TO K
+
+Prob:
+Array_lc_no_of_subarray_with_sum_equal_to_k
+/https://leetcode.com/problems/subarray-sum-equals-k/submissions/
+
+Algo:
+Iterate over the array and keep cumulating the sum (ie form the very first element).
+Now if we aim to find subarray with sum=k,(eg k=10) then there can be two possibilities.
+1. the cumulative sum can be =k;
+2. the cumulative sum is greater than k with difference, diff=sum-k. but we may have encountered that as a sum before.
+eg at index 3(initial 0->3 ie 4 elements) sum=5, at some greater index 8(sum of initial 0->8 ie 9 elements) we get
+sum=15. so now we have a subarray from index 4->8 with sum=10;
+We create a hashmap where <k,v>=<sum, no of arrays possible for given sum starting from first element>
+keep adding every time the sum=k or (sum-k) was present before.
+
+    public class Array_lc_no_of_subarray_with_sum_equal_to_k {
+        public int subarraySum(int[] nums, int k) {
+            int cnt =0;
+            HashMap<Integer, Integer> map=new HashMap<Integer,Integer>();
+            int sum=0;
+            for(int x:nums){
+                // Add current element to sum so far.
+                sum+=x;
+                if(sum==k) cnt++;
+                if(map.get(sum-k)!=null) cnt+=map.get(sum-k);
+                if(map.get(sum)==null)
+                    map.put(sum,1);
+                else
+                    map.put(sum,map.get(sum)+1);
+            }
+            return cnt;
+        }
+    }
+
+------------------------------------------------------------------------------------------------------------------------
+
+KADANE'S ALGO: MAX CONTINUOUS SUBARRAY
+
+Array_ib_max_sum_contiguous_subarray
+
+Ref: https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+Code: https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0
+
+ 1-D Used to find the largest Sum in a Contiguous Subarray
+ tc= O(n) sc=O(1)
+Initialize:
+    max_so_far = 0
+    max_ending_here = 0
+
+Loop for each element of the array
+  (a) max_ending_here = max_ending_here + a[i]
+  (b) if(max_so_far < max_ending_here)
+            max_so_far = max_ending_here
+  (c) if(max_ending_here < 0)
+            max_ending_here = 0
+return max_so_far
+
+2-D
+Ref: https://www.geeksforgeeks.org/maximum-sum-rectangle-in-a-2d-matrix-dp-27/
+
+maximum-sum-rectangle-in-a-2d-matrix
+Kadane’s algorithm for 1D array can be used to reduce the time complexity to O(n^3).
+The idea is to fix the left and right columns one by one and find the maximum sum contiguous rows for every left and
+right column pair. We basically find top and bottom row numbers (which have maximum sum) for every fixed left and
+right column pair. To find the top and bottom row numbers, calculate sun of elements in every row from left to right
+and store these sums in an array say temp[]. So temp[i] indicates sum of elements from left to right in row i. If we
+apply Kadane’s 1D algorithm on temp[], and get the maximum sum subarray of temp, this maximum sum would be the maximum
+possible sum with left and right as boundary columns. To get the overall maximum sum, we compare this sum with the
+maximum sum so far.
+
+modified kadanes algo:
+https://www.interviewbit.com/problems/flip/
+------------------------------------------------------------------------------------------------------------------------
+
+COUNTING SORT
+
+Ref: https://www.geeksforgeeks.org/counting-sort/
+In a case where there are only positive numbers we can simply create an array and keep inc the index=number.
+Works just for +ve numbers.
+
+PIGEONHOLE SORT:
+
+Ref: https://www.geeksforgeeks.org/pigeonhole-sort/
+In case when negatives are also present in the array, we find the min and inc the (number-min) index.
+ie if no are {-5, -5, 0, -3, 4, 5, -1, 3}, then min is -10 range would be 5-(-5)+1=11. resulting array would be
+{2,0,1,0,1,1,0,0,1,1,1 }. -5 appears twice therefore count at -5-(-5)=0th index has been incremented twice.
+
+------------------------------------------------------------------------------------------------------------------------
+
+MERGE INTERVAL: ADD NEW INTERVAL AND MERGE
+
+Problem:
+Array_ib_merge_intervals
+https://www.interviewbit.com/problems/merge-intervals/
+
+Approach:
+we need to add interval a to list of intervals l
+case 1: list is empty.
+    simply add element and return
+we traverse on the list till the time l(i).end < a.start.
+case 2: the interval does not overlap and has to be added in the end.
+    we check that we have traversed the complete list and the (l(i).end < a.start) cond. did not fail. now directly add.
+case 3: the interval does not overlap and has to be added in the front.
+case 4: the interval does not overlap and has to be added at the pos where our cond failed.
+    Both case 3 and 4 will be solved by directly checking for a.end<l(i).start. add the interval a at i position and
+    return the list.
+case 5: intervals overlap.
+    for the ith interval put its start and end as the min and max of l(i)'s and a's start and end respectively.
+    follow the merge method. keep removing the next intervals till the time they overlap and updating the end
+    accordingly.
+
+
+    public ArrayList<Interval> insert(ArrayList<Interval> l, Interval a) {
+
+        if(a==null)return l;
+
+        //case 1: list is empty.
+        if(l==null || l.size()==0){
+            ArrayList<Interval> t=new ArrayList<Interval>();
+            t.add(a);
+            return t;
+        }
+
+        int i=0;
+        while(i!=l.size() && a.start>l.get(i).end)i++;
+
+        //case 2: the interval does not overlap and has to be added in the end.
+        if(i==l.size()){
+            l.add(a);
+            return l;
+        }
+
+        //case 3: the interval does not overlap and has to be added in the front.
+        //case 4: the interval does not overlap and has to be added at the pos where our cond failed.
+        if(a.end<l.get(i).start){
+            l.add(i,a);
+            return l;
+        }
+
+        //case 5: intervals overlap.
+
+        l.get(i).start=Math.min(l.get(i).start, a.start);
+        l.get(i).end=Math.max(l.get(i).end, a.end);
+
+        while(i<l.size()-1){
+            if(l.get(i).end>=l.get(i+1).start){
+                l.get(i).end=Math.max(l.get(i).end, l.get(i+1).end);
+                l.remove(i+1);
+            }
+            else
+                break;
+        }
+        return l;
+    }
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+PNC: NEXT PERMUTATION
+
+Problem:
+Array_ib_next_permutations
+https://www.interviewbit.com/problems/next-permutation/
+
+Approach:
+1. start traversing from the end and look for the first element e which is smaller than the one that is after it.
+2. If there is no such element then sort the array and return the result
+3. Otherwise traverse again from the end to find the smallest element that is greater than e.\
+4. swap e with this element. Sort all elements after the old pos of e.
+
+------------------------------------------------------------------------------------------------------------------------
+
+3 SUM TECHNIQUE
+
+Whenever we need to find a triplet where a+b+c=t or a quad of a+b+c+d=t, we fix the initial variables and recalculate
+the sum to be considered for the remaining two.
+Now for finding the two variables we have two approaches:
+    -2 pointer approach where we take two pointers from the beginning and move l,r depending on whether the curr sum is
+    less or more. We prefer this one where the order has to be lexicographic in nature.
+    -Hashing approach. This does not generate lexicographic result.
+    eg arr 1 4 2 6 5 4 8 -6 0 -2 since (6,-6) will be encountered first while our ans has to be (2 -2).
+
+------------------------------------------------------------------------------------------------------------------------
+
+ROTATE ARRAY
+
+Array_lc_rotate_array
+TC: O(n), SC: O(n):
+create new array and copy the elements accordingly.
+
+TC: O(n), SC: O(1):
+reverse array. now the last elements have come to the front and vice versa.
+individually reverse the initial k elements and then the remaining elements.
+
+------------------------------------------------------------------------------------------------------------------------
