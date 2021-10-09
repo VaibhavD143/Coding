@@ -1,0 +1,78 @@
+Bitmanipulation:
+- https://leetcode.com/problems/single-number-ii/
+
+Graph:
+- Cycle detection, Directed Undirected
+    -https://www.interviewbit.com/old/problems/cycle-in-directed-graph/
+    - Topological order for directed
+    - Union find to detect cycle - https://www.geeksforgeeks.org/union-find-algorithm-set-2-union-by-rank/
+- MST - Prim's
+    - https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1#
+    - https://www.interviewbit.com/old/problems/commutable-islands/
+- Singla source shorted path to all vertices - Dijkstra
+    - https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1#
+    - https://practice.geeksforgeeks.org/problems/minimum-cost-path3833/1#
+- Negative cycle - Bellman ford
+    - https://practice.geeksforgeeks.org/problems/negative-weight-cycle3504/1#
+- Min distance all vertices - Floyd Warshall
+    - https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/
+- Shorted path from source to destination at most K edges- 
+    - https://leetcode.com/problems/cheapest-flights-within-k-stops/
+    - https://www.hackerearth.com/practice/algorithms/graphs/shortest-path-algorithms/practice-problems/algorithm/shortest-path-revisited-9e1091ea/
+- Snakes and ladder - min cost path
+    - https://practice.geeksforgeeks.org/problems/snake-and-ladder-problem/0
+    - https://leetcode.com/problems/snakes-and-ladders/
+- TopologicalSort
+    - Kahn's algo - indegree/out degree
+    - https://leetcode.com/problems/course-schedule-ii/
+- Disjoint set union
+    - https://leetcode.com/problems/redundant-connection/
+    - https://leetcode.com/problems/most-stones-removed-with-same-row-or-column
+- Strongly Connected components
+- Bipartite graph
+    - https://leetcode.com/problems/is-graph-bipartite/
+- Articulation points
+- Shortes path in grid - handlock
+
+Array:
+- 3sum closest https://leetcode.com/problems/3sum-closest/
+- https://www.interviewbit.com/problems/merge-intervals/
+- https://leetcode.com/problems/permutation-sequence/
+- https://leetcode.com/problems/maximum-sum-circular-subarray/
+- majority element
+- https://leetcode.com/problems/search-in-rotated-sorted-array/
+- https://www.interviewbit.com/old/problems/maximum-absolute-difference/
+- https://www.interviewbit.com/old/problems/repeat-and-missing-number-array/
+- https://leetcode.com/problems/spiral-matrix/submissions/
+- https://www.interviewbit.com/old/problems/first-missing-integer/
+- https://leetcode.com/problems/distant-barcodes/
+- https://leetcode.com/problems/sum-of-distances-in-tree/
+
+Stack:
+- https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
+
+Window:
+- https://leetcode.com/problems/longest-repeating-character-replacement/
+- https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/
+- https://leetcode.com/problems/sliding-window-median/
+
+LL:
+- https://leetcode.com/problems/palindrome-linked-list
+- https://leetcode.com/problems/linked-list-cycle-ii/
+- Recursive approach in Gauri's LL list
+
+DP:
+
+https://leetcode.com/problems/count-submatrices-with-all-ones/
+https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
+https://leetcode.com/problems/combination-sum-iv/
+- nth fibonacci number in log(n)
+https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/
+https://leetcode.com/problems/russian-doll-envelopes/
+https://leetcode.com/problems/longest-palindromic-subsequence/
+https://leetcode.com/problems/repeated-substring-pattern/
+https://leetcode.com/problems/distinct-subsequences/
+https://www.interviewbit.com/problems/scramble-string/
+https://www.interviewbit.com/old/problems/palindrome-partitioning-ii/
+https://www.interviewbit.com/old/problems/smallest-sequence-with-given-primes/
+https://www.interviewbit.com/old/problems/max-product-subarray/

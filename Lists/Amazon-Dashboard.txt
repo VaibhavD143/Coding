@@ -1,0 +1,85 @@
+Topics:
+
+> Queue/Stack
+- Gusai's list
+- Pending : Gauri's list
+
+> String
+- 
+
+> BinarySearch
+- interviewbit buckets
+
+> Sorting
+- 
+
+> LinkedList
+- Gusai's list
+- Gauri's list
+
+> Array :
+- Gusai's chap 1
+
+> Two pointer /Sliding window
+- Gusai's longest subarray
+- Gusai's other Topics
+
+
+
+
+
+> Bitmanipulation
+-
+
+> DP
+- My list, left last section
+- Gusai's DP list
+
+> Tree
+- Gauri's list
+
+> Graph
+- Gauri's list
+- Gusai's List
+
+
+
+
+
+
+Pending:
+
+- DS implementations and Working
+    - Queue from Stack : Done
+    - Stack from Queue : Done
+    - Segment tree
+    - Trie
+    - BST Tree operation
+    - Heap
+    - hashmap
+    - AVL
+- Introduction refinement
+- Resume check
+- Why amazon?
+- Why leaving walmart?
+- Class construction
+- Working of custom comparator and usage
+- Data Structures in python
+    - from python notes.
+- OS/ DBMS
+- Amazon Principals
+
+
+
+Concepts:
+- infix to suffix and infix to prefix : Revise
+    - https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/
+
+
+- LRU
+- KMP - Done - GFG
+- HandLock's algorithm
+- Fast expo
+- Sieve
+- Rolling hash
+    - https://leetcode.com/problems/longest-duplicate-substring/
