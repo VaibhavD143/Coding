@@ -142,4 +142,15 @@ https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84550/Slow
 - Perfect Binary Tree: All leaf nodes are at same level and all the Internal nodes have either 2 children
 - Balanced Binary Tree: Height of the tree is log(N). Height difference betweenany two leaf node would be no more than 1
 - Degenerate/Skewed Tree: Every internal node has only one child
-- 
+
+*) Farthest node distance from each node:
+- For each node, diameter's either of the node is Farthest
+
+*) Prefix, infix, suffix expression:
+- position of the operator is different
+- infix is normal expression
+- Prefix to infix:
+    - Read in reverse
+- Postfix to infix:
+    - Read from the front
+push operand and evaluate when operator
